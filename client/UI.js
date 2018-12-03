@@ -10,14 +10,22 @@ function renderInputs() {
     form.method = "post";
     form.setAttribute("id", "myForm");
     for(let i in arguments) {
-        let input = document.createElement('input');
+        let div = document.createElement('div');
+        div.classList.add("myInput");
+        let label = document.createElement("label");
+        let input = document.createElement("input");
+        input.type = "text";
+        input.setAttribute("required", "required");
         input.name = arguments[i];
-        form.appendChild(input);
+        label.innerHTML = arguments[i];
+        form.appendChild(div);
+        div.appendChild(input);
+        div.appendChild(label);
     }
     let saveBtn = document.createElement("input");
     saveBtn.setAttribute("type", "submit");
     saveBtn.setAttribute("name", "submit");
-    saveBtn.value = "Сохранить";
+    saveBtn.value = "Submit";
     form.appendChild(saveBtn);
     body.appendChild(form);
 }
