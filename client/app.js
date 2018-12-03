@@ -1,7 +1,5 @@
 import { renderInputs } from "./UI.js";
 import { renderSubmit } from "./UI.js";
-import { toJSONString } from "./UI.js";
-import { saveData } from "./Storage.js";
 import { loadData } from "./Storage.js";
 
 import {User} from './User.js';

@@ -1,9 +1,4 @@
-export { saveData }
 export { loadData }
-
-function saveData(obj) {
-    localStorage.setItem('healthRecord_' + Date.now(), obj);
-}
 
 function loadData() {
     let keys = Object.keys(localStorage);
