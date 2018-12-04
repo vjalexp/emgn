@@ -42,14 +42,16 @@ function renderSubmit() {
                 let request = new XMLHttpRequest();
                 request.open("POST", form.action);
                 request.send(formData);
+                location.reload();
             }
         }
     }); 
 }
 
 function renderRecord() {
-    let body = document.querySelector("body");
+    let body = document.querySelector("body");    
     let row = document.createElement('div');
+    row.classList.add("container");
     for(let i in arguments) {
         let item = document.createElement('span');
         item.innerHTML = arguments[i];

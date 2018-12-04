@@ -18,8 +18,8 @@ form {
     background-color: white;
     border-radius: 40px;
     margin: 40px 0;
-    left: 33%;
-    transform: translate( -50% , 0 );
+    /* left: 33%; */
+    /* transform: translate( -50% , 0 ); */
 }
 
 form h1 { 
@@ -121,4 +121,19 @@ form .myInput input[type="text"]:valid ~ label {
     text-transform: uppercase;
     font-style: italic;
     transform: translate( 5px , -35px ) scale(0.6);
+}
+
+.container {
+    display: block;
+    padding: 5px;
+    margin: 5px;
+    width: 150px;
+    background: #fff;
+    border-radius: 60px;
+    text-align: center;
+}
+
+.container span {
+    display: inline-block;
+    padding: 3px;
 }

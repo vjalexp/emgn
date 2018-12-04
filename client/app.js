@@ -1,7 +1,5 @@
 import { renderInputs } from "./UI.js";
 import { renderSubmit } from "./UI.js";
-import { loadData } from "./Storage.js";
-
 import {User} from './User.js';
 import {Measure} from './Measure.js';
 import {Notification} from './Notification.js';

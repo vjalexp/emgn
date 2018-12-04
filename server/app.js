@@ -1,16 +1,31 @@
 const express = require('express');
+const sqlite3 = require('sqlite3').verbose();
 const multer  = require('multer');
-let upload = multer(); 
+let record = multer(); 
 const app = express();
 
-app.post('/api/measures', upload.fields([]), (req, res) => { 
+let db = new sqlite3.Database('db/emgn.db');
+
+app.post('/api/measures', record.fields([]), (req, res) => { 
   console.log(req.body);
-  let LocalStorage = require('node-localstorage').LocalStorage;
-  localStorage = new LocalStorage('./scratch');
-  localStorage.setItem('healthRecord_' + Date.now(), JSON.stringify(req.body));
-  console.log(localStorage);
+  db.run(`INSERT INTO measures VALUES(?,?,?)`, [req.body.sys, req.body.dia, req.body.pulse], function(err) {
+    if (err) {
+      return console.log(err.message);
+    }
+  });
   res.sendStatus(200); 
 }); 
+
+app.get('/api/measures', function(req, res) {  
+  var records = [];
+  db.serialize(function() {
+      db.each("SELECT * FROM measures", function(err, row) {
+          records.push({sys: row.sys, dia: row.dia, pulse: row.pulse})
+      }, function() {
+          res.send(records);
+      })
+  })
+});
   
 app.listen(3000, function () {
   console.log('Listen port 3000');
