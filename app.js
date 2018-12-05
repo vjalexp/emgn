@@ -4,7 +4,8 @@ app.use(express.static(__dirname + '/client'));
 const sqlite3 = require('sqlite3').verbose();
 const multer  = require('multer');
 let record = multer(); 
-let db = new sqlite3.Database('db/emgn.db');
+let db = new sqlite3.Database(':memory:');
+db.run("CREATE TABLE IF NOT EXISTS measures (sys INTEGER, dia INTEGER, pulse INTEGER)");
 
 app.get('/',function(req,res){
   res.sendFile('index.html');
