@@ -10,7 +10,7 @@ export class Measure {
 
     static load() {
         let request = new XMLHttpRequest();
-        request.open("GET", "http://localhost:3000/api/measures", false);
+        request.open("GET", "/api/measures", false);
         request.send();
         let status = request.status;
         if (status==200) {

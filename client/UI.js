@@ -6,7 +6,7 @@ function renderInputs() {
     let body = document.querySelector("body");
     let form = document.createElement('form');
     form.name = "myForm";
-    form.action = "http://localhost:3000/api/measures";
+    form.action = "/api/measures";
     form.method = "post";
     form.setAttribute("id", "myForm");
     for(let i in arguments) {
